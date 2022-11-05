@@ -1,0 +1,161 @@
+* {
+  margin: 0; /* Seletor universal para zerar o margin */
+  padding: 0; /* Seletor universal para zerar os preenchimentos internos das caixas (padding) */
+  box-sizing: border-box; /* O tamanho da caixa será a partir da borda, não levando em conta o padding que for colocado*/
+}
+
+/* Criando variáveis para cor*/
+:root {
+  --card-title-border-color: #746615;
+  --card-color-primary: #f7dd43;
+  --card-bg-color: #1d1c19;
+  --bg: url(./assets/bg-yellow.svg);
+}
+
+/* Adicionando uma classe blue no body*/
+body.blue {
+  --card-title-border-color: #338af3;
+  --card-color-primary: #338af3;
+  --card-bg-color: #202024;
+  --bg: url(./assets/bg-blue.svg);
+}
+
+/* Adicionando uma classe green no body*/
+body.green {
+  --card-title-border-color: #047c3f;
+  --card-color-primary: #047c3f;
+  --card-bg-color: #1a1f1b;
+  --bg: url(./assets/bg-green.svg);
+}
+
+ul {
+  list-style: none; /* Retira os pontos das listas*/
+}
+
+body {
+  background-color: #121214; /* Cor de fundo do body*/
+  background-image: var(
+    --bg
+  ); /* variável de referencia da imagem do background*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body * {
+  font-family: "Roboto", sans-serif; /* Todos os elementos do Body terão essa font-family*/
+}
+
+#app {
+  /* O símbolo # é seletor de id. */
+  width: fit-content; /* Irá encaixar o conteúdo de acordo com a caixa*/
+  margin: 52px auto; /* Fica 52px em cima e embaixo, mas as laterais o navegador preenche automático*/
+  padding-top: 52px;
+}
+
+header {
+  margin-bottom: 63px; /* Margin inferior do header de 63px */
+  text-align: center;
+}
+
+#cards {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.card {
+  padding: 32px 23px;
+  text-align: center; /* Texto do card alinhado ao centro */
+
+  background: var(--card-bg-color); /* Cor de fundo do card*/
+  border-bottom: 2px solid var(--card-color-primary); /* Espessura e cor da borda do card inferior */
+  border-radius: 6px; /* Borda arredondada de 6px */
+}
+
+.card h2 {
+  display: flex; /* Une os elementos e habilita algumas funções de posicionamento dos items*/
+  gap: 16px; /* Distância entre os items de 16px */
+  justify-content: center; /* Items centralizados ao centro */
+  align-items: center;
+
+  padding: 8px 16px; /* Preenchimento (padding) do h2 */
+  border: 1px solid var(--card-title-border-color); /* Espessura e cor da borda do h2 */
+  border-radius: 6px; /* Borda arredondada do ha2 de 6px */
+
+  width: fit-content;
+  margin-inline: auto;
+  margin-bottom: 53px;
+
+  color: #f7dd43;
+}
+
+.card h2 span {
+  color: #e1e1e6;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 270px;
+}
+
+.card ul li {
+  display: flex; /* Une os elementos e habilita algumas funções de posicionamento dos items*/
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card ul li + li {
+  padding-top: 24px;
+  border-top: 1px solid #323238;
+}
+
+.card ul li strong {
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 125%;
+  color: #e1e1e6;
+}
+
+/*--------------------------Abaixo são regras de animações-------------------------*/
+
+.card h2:hover,
+.card ul li strong:hover,
+.card ul li img:hover {
+  transform: scale(1.1);
+}
+
+.card h2,
+.card ul li strong,
+.card ul li img {
+  transition: transform 0.3s;
+}
+.card {
+  opacity: 0;
+  animation: appear 0.2s forwards;
+}
+
+@keyframes appear {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/*----------------Abaixo são regras para o controle da tela----------------------*/
+
+@media (min-width: 700px) {
+  #cards {
+    max-width: 670px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
